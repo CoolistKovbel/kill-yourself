@@ -11,15 +11,17 @@ export async function POST(res: Request) {
     const { email } = await res.json();
     console.log(email)
 
-    const exist = await db.mailingList.findUnique({
-      where: {
-        email: email
-      } as idk,
-    });
+    // const exist = await db.mailingList.findUnique({
+    //   where: {
+    //     email: email
+    //   } as idk,
+    // });
 
-    if (exist) {
-      return  NextResponse.json("Use another email this one on the list already....", {status: 401})
-    }
+    // console.log(exist)
+
+    // if (exist) {
+    //   return  NextResponse.json("Use another email this one on the list already....", {status: 401})
+    // }
 
     const resp = await db.mailingList.create({
       data: {

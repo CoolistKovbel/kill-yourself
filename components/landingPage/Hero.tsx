@@ -42,18 +42,14 @@ function Hero() {
 
       const gg =  await  res.json()
 
-      if(gg & gg.message) {
-        toast({
-          title: "Alert 🌋",
-          description: "Account listed succesfullly"
-        })
-      } {
-        toast({
-          title: "Alert 🌋",
-          description: "Account listing failed horribly"
-        })
-      }
+      console.log(gg)
 
+      toast({
+        title: "Alert 🌋",
+        description: "Account listed succesfullly"
+      })
+
+      form.reset()
 
     } catch (error) {
       console.log(error)
