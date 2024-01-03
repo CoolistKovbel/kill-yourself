@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  email        String  @unique
+  username     String  @unique
+  membership   Boolean
+  password     String
+  profileImage String?
+
+  MetaAddress String?
+  tokens      Int     @default(24)
+
+  Transactions Transactions[]
+
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+}
+
+model DocumentUpload {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  fileName    String
+  uploadDate  DateTime @default(now())
+  embedding   Float[]
+}
+
+enum TransactionType {
+  CONVO
+  PHOTO
+  BUISNESS
+}
+
+model Transactions {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  message String
+  reply   String
+
+  Transact TransactionType @default(CONVO)
+
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model MailingList {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String
+  createdAt DateTime @default(now())
+}
