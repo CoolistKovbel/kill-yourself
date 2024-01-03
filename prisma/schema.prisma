@@ -18,7 +18,7 @@ model User {
   password     String
   profileImage String?
 
-  MetaAddress String?
+  MetaAddress String? @unique
   tokens      Int     @default(24)
 
   Transactions Transactions[]
@@ -58,6 +58,6 @@ model Transactions {
 
 model MailingList {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  email     String
+  email     String   @unique
   createdAt DateTime @default(now())
 }
