@@ -86,15 +86,16 @@ function ChatForm() {
     <div>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="p-4 bg-[#334] text-black">
+
           <FormField
             control={form.control}
             name="prompt"
             render={({ field }) => (
-              <FormItem className="col-span-12 lg:col-span-10">
-                <FormControl className="m-0 p-0">
+              <FormItem className="w-full">
+                <FormControl>
                   <textarea
-                    className="overflow-auto"
+                    className="overflow-auto w-full h-20 resize-none p-2"
                     placeholder="give me message"
                     {...field}
                   />
@@ -128,14 +129,14 @@ function ChatForm() {
 
           <Button
             type="submit"
-            className="col-span-12 lg:col-span-2 w-full m-0"
+            className="w-full mt-2"
             disabled={isLoading}
           >
             generate
           </Button>
         </form>
       </Form>
-      
+
     </div>
   );
 }
