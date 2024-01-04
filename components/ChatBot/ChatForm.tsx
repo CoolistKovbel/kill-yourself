@@ -9,12 +9,22 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+
+interface ChatFormProps {
+  convoSetMessage: any;
+}
 
 const formSchema = z.object({
   prompt: z.string().min(2, {
@@ -23,7 +33,7 @@ const formSchema = z.object({
   option: z.string(),
 });
 
-function ChatForm() {
+function ChatForm({ convoSetMessage }: ChatFormProps) {
   const router = useRouter();
 
   const convoCommands = [
@@ -73,7 +83,41 @@ function ChatForm() {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      console.log(values, " these are from the chatbot");
+      //   Sending message
+
+      const userMessage = {
+        role: "user",
+        content: values.prompt,
+      };
+
+      const botMessage = {
+        role: "system",
+        content: values.option,
+      };
+
+      const newMessages = [botMessage, userMessage];
+
+      const res = await fetch("/api/chat-message", {
+        method: "POST",
+        body: JSON.stringify({
+          newMessages,
+        }),
+      });
+
+      if (res.ok) {
+        const responseJson = await res.json(); // Extract response data
+        console.log(responseJson, "Thisistheresponse from api in chat form")
+        
+        convoSetMessage((current: any) => [
+          ...current,
+          userMessage,
+          responseJson,
+        ]);
+        form.reset();
+      } else {
+        // Handle non-successful responses, e.g., show an error message
+        console.error("Request failed with status: " + res.status);
+      }
     } catch (error: any) {
       console.log(error);
       //   Possible pro model
@@ -84,10 +128,11 @@ function ChatForm() {
 
   return (
     <div>
-
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="p-4 bg-[#334] text-black">
-
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="p-4 bg-[#334] text-black"
+        >
           <FormField
             control={form.control}
             name="prompt"
@@ -127,16 +172,11 @@ function ChatForm() {
             )}
           />
 
-          <Button
-            type="submit"
-            className="w-full mt-2"
-            disabled={isLoading}
-          >
+          <Button type="submit" className="w-full mt-2" disabled={isLoading}>
             generate
           </Button>
         </form>
       </Form>
-
     </div>
   );
 }
