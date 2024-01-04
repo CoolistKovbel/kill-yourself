@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { db } from "./db";
 import { compare } from "bcrypt";
-import { User } from "@prisma/client";
+
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(db),
@@ -49,7 +49,7 @@ export const authOptions: NextAuthOptions = {
           id: existingUser.id,
           username: existingUser.username || "",
           email: existingUser.email,
-          MetaAddress: existingUser.MetaAddress || "", 
+          metaAddress: existingUser.MetaAddress || "", 
           profileImage: profileImage, // 
           membership: existingUser.membership || false,
           password: existingUser.password || "", 
@@ -68,8 +68,9 @@ export const authOptions: NextAuthOptions = {
         return {
           ...token,
           username: user.username,
-          metaAddress: user.MetaAddress,
+          metaAddress: user.metaAddress,
           email: user.email,
+          tokens: user.tokens
         };
       }
 
@@ -83,6 +84,7 @@ export const authOptions: NextAuthOptions = {
           ...session.user,
           username: token.username,
           metaAddress: token.metaAddress,
+          tokens: token.tokens,
           id: token.id,
         },
       };
