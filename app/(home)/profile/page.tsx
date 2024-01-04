@@ -26,7 +26,8 @@ async function ProfilePage() {
           <div className='flex items-start flex-col gap-2'>
             <p>Email: <span>{session?.user.email}</span></p>
             <p>MetaAddress: <span className='text-[12px] font-bold'>{session?.user.metaAddress}</span></p>
-            <p>Username:  <span>{session?.user.username}</span></p>
+            <p>Username:  <span>{session?.user.username}</span> </p>
+            <p>Tokens: <span>{session?.user.tokens}</span> </p>
           </div>
 
         </div>
