@@ -21,12 +21,10 @@ export const authOptions: NextAuthOptions = {
         username: { label: "username", placeholder: "killYourSelf123" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials) {
+      async authorize(credentials: Record<"username" | "password", string> | undefined) {
         if (!credentials?.username || !credentials?.password) {
           return null;
         }
-
-        console.log(credentials, "auth lohin")
 
         const existingUser = await db.user.findUnique({
           where: { username: credentials?.username },
@@ -45,26 +43,27 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
+        const profileImage: string | null = existingUser.profileImage || "";
+
         return {
-          id: `${existingUser.id}`,
+          id: existingUser.id,
           username: existingUser.username || "",
           email: existingUser.email,
-          metaAddress: existingUser.MetaAddress || "",
+          MetaAddress: existingUser.MetaAddress || "", 
+          profileImage: profileImage, // 
+          membership: existingUser.membership || false,
+          password: existingUser.password || "", 
+          tokens: existingUser.tokens || 24,
+          createdAt: existingUser.createdAt || new Date(),
+          updateAt: existingUser.updateAt || new Date(),
         };
       },
     }),
   ],
   callbacks: {
-    async jwt({
-      token,
-      user,
-    }: {
-      token: any; 
-      user: User;
-    }) {
+    async jwt({ token, user }) {
       // console.log(profile, "jwt token callback")
 
-      // Persist the OAuth access_token and or the user id to the token right after signin
       if (user) {
         return {
           ...token,
