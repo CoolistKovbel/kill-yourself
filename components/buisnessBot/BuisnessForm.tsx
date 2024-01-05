@@ -67,6 +67,15 @@ function BuisnessForm() {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       console.log(values);
+
+
+        const d = await fetch("/api/buisness-chat", {
+            method: "POST",
+            body: JSON.stringify(values)
+        })
+
+
+
     } catch (error: any) {
       console.log(error);
       //   Possible pro model
@@ -84,7 +93,7 @@ function BuisnessForm() {
   });
 
   return (
-    <div>
+    <div className="">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
