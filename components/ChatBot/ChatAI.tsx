@@ -4,19 +4,18 @@ import { useState } from "react";
 import ChatForm from "./ChatForm";
 import ChatMessage from "./ChatMessage";
 
-function ChatAI() {
+function  ChatAI() {
 
 
   const [convoMessage, convoSetMessage] = useState([])
 
 
-  console.log(convoMessage," in chat AI page")
 
   return (
     <div>
       <ChatForm convoSetMessage={convoSetMessage} />
 
-      <ChatMessage />
+      <ChatMessage convoMessage={convoMessage}/>
     </div>
   );
 }

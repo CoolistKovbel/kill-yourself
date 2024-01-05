@@ -1,9 +1,13 @@
 import Image from "next/image";
 
-function ChatMessage() {
+interface ChatMessageProps{
+  convoMessage: any;
+}
+
+function ChatMessage({convoMessage}: ChatMessageProps) {
 
 
-
+  console.log(convoMessage,"in chat messages") 
 
 
   return (
