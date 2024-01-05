@@ -61,3 +61,11 @@ model MailingList {
   email     String   @unique
   createdAt DateTime @default(now())
 }
+
+model ChatPrompt {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userText  String
+  botText   String
+  cost      Int
+  createdAt DateTime @default(now())
+}

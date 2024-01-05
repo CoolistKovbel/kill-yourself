@@ -34,8 +34,8 @@ function BuisnessForm() {
   const convoCommands = [
     {
       bot: 1,
-      command: "Can you come up with a good buisness logo for, ",
-      text: "logo",
+      command: "Write a mission statement for, ",
+      text: "mission statement",
     },
     {
       bot: 2,
@@ -44,13 +44,18 @@ function BuisnessForm() {
     },
     {
       bot: 3,
-      command: "Can you create a brand description",
+      command: "Can you create a brand description for,",
       text: "Brand Description",
     },
     {
       bot: 4,
       command: "Can you give me a good product description for, ",
       text: "product",
+    },
+    {
+      bot: 5,
+      command: "Write a buisness plan for,, ",
+      text: "Buisness plan",
     },
   ];
 
@@ -97,7 +102,7 @@ function BuisnessForm() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="text-black mt-2"
+          className="p-4 bg-[#324] text-black"
         >
           <FormField
             control={form.control}

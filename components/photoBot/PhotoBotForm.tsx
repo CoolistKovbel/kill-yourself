@@ -144,10 +144,10 @@ function PhotoBotForm() {
   };
 
   return (
-    <div className="p-4 ">
+    <div>
       <Form {...form}>
 
-        <form onSubmit={form.handleSubmit(onSubmit)} className="text-black" >
+        <form onSubmit={form.handleSubmit(onSubmit)} className=" p-4 bg-[#334] text-black" >
 
           <div className="flex items-center justify-between gap-2 w-full ">
 
