@@ -7,13 +7,19 @@ function PhotoBot() {
 
   return (
     <div className="w-full h-screen bg-[#121] text-white">
-      <header className="p-4">
+      <header className="p-4 bg-[#321]">
         <h2 className="text-2xl md:text-4xl font-bold">Photo Bot </h2>
         <p className="font-bold text-sm">Generate a few images based on your input</p>
       </header>
 
       {/* ÷Forms  */}
       <PhotoBotForm />
+
+      {/* Createi guess a slide show */}
+
+      <div>
+        <h2>Image carosal</h2>
+      </div>
 
     </div>
   );

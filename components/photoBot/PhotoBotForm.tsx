@@ -30,7 +30,6 @@ const formSchema = z.object({
   amount: z.string().min(1),
   resolution: z.string().min(1),
   medium: z.string(),
-  title: z.string(),
 });
 
 function PhotoBotForm() {
@@ -165,7 +164,7 @@ function PhotoBotForm() {
               )}
             />
 
-            <div className="flex items-center flex-col w-full">
+            <div className="flex items-center flex-col w-full gap-2">
               <FormField
                 control={form.control}
                 name="resolution"
