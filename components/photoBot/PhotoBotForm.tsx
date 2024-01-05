@@ -136,6 +136,13 @@ function PhotoBotForm() {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       console.log(values);
+
+      const res = await fetch("/api/photo-post", {
+        method: "POST",
+        body: JSON.stringify(values),
+      });
+
+      console.log(res);
     } catch (err: any) {
       console.log(err);
     } finally {
@@ -146,11 +153,11 @@ function PhotoBotForm() {
   return (
     <div>
       <Form {...form}>
-
-        <form onSubmit={form.handleSubmit(onSubmit)} className=" p-4 bg-[#334] text-black" >
-
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className=" p-4 bg-[#334] text-black"
+        >
           <div className="flex items-center justify-between gap-2 w-full ">
-
             <FormField
               control={form.control}
               name="description"
@@ -177,15 +184,11 @@ function PhotoBotForm() {
                       defaultValue={field.value}
                     >
                       <FormControl>
-                        <SelectTrigger >
-
+                        <SelectTrigger>
                           <SelectValue />
-
                         </SelectTrigger>
                       </FormControl>
-                      <SelectContent>
-                        {optiony}
-                      </SelectContent>
+                      <SelectContent>{optiony}</SelectContent>
                     </Select>
                     <FormMessage />
                   </FormItem>
@@ -196,7 +199,7 @@ function PhotoBotForm() {
                 control={form.control}
                 name="amount"
                 render={({ field }) => (
-                  <FormItem className="w-full" >
+                  <FormItem className="w-full">
                     <Select
                       disabled={isLoading}
                       onValueChange={field.onChange}
@@ -219,7 +222,7 @@ function PhotoBotForm() {
                 control={form.control}
                 name="medium"
                 render={({ field }) => (
-                  <FormItem  className="w-full">
+                  <FormItem className="w-full">
                     <Select
                       disabled={isLoading}
                       onValueChange={field.onChange}
@@ -238,19 +241,12 @@ function PhotoBotForm() {
                 )}
               />
             </div>
-
           </div>
 
-          <Button
-            type="submit"
-            className="w-full mt-4"
-            disabled={isLoading}
-          >
+          <Button type="submit" className="w-full mt-4" disabled={isLoading}>
             generate
           </Button>
-          
         </form>
-
       </Form>
     </div>
   );

@@ -35,27 +35,47 @@ function BuisnessForm() {
     {
       bot: 1,
       command: "Write a mission statement for, ",
-      text: "mission statement",
+      text: "mission statement for",
     },
     {
       bot: 2,
       command: "Can you come up with a good brand name for, ",
-      text: "Brand Name",
+      text: "Brand Name for",
     },
     {
       bot: 3,
       command: "Can you create a brand description for,",
-      text: "Brand Description",
+      text: "Brand Description for",
     },
     {
       bot: 4,
       command: "Can you give me a good product description for, ",
-      text: "product",
+      text: "product such as",
     },
     {
       bot: 5,
-      command: "Write a buisness plan for,, ",
-      text: "Buisness plan",
+      command: "Write a buisness plan for, ",
+      text: "Buisness plan for",
+    },
+    {
+      bot: 6,
+      command: "Write 3 ideas for starting a new buisness plan for, ",
+      text: "generate buisness idea for",
+    },
+    {
+      bot: 7,
+      command: "Write a marketing plan for, ",
+      text: "Marketing plan for",
+    },
+    {
+      bot: 8,
+      command: "Provide a list marketing startegies for, ",
+      text: "Marketing strategy for",
+    },
+    {
+      bot: 9,
+      command: "Generate a list of ways to increase sales for, ",
+      text: "Ways to increase sales for",
     },
   ];
 
@@ -73,14 +93,10 @@ function BuisnessForm() {
     try {
       console.log(values);
 
-
-        const d = await fetch("/api/buisness-chat", {
-            method: "POST",
-            body: JSON.stringify(values)
-        })
-
-
-
+      const d = await fetch("/api/buisness-chat", {
+        method: "POST",
+        body: JSON.stringify(values),
+      });
     } catch (error: any) {
       console.log(error);
       //   Possible pro model

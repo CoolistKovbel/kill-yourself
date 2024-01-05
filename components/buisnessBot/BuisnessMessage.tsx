@@ -1,33 +1,29 @@
 import Image from "next/image";
 
-interface ChatMessageProps{
-  convoMessage: any;
-}
-
-function ChatMessage({convoMessage}: ChatMessageProps) {
-
-
-  console.log(convoMessage,"in chat messages") 
-
-
+function BuisnessMessage() {
   return (
     <div className="bg-[#341] text-white p-4 w-full h-full">
-
-      <h2 className="text-2xl md:text-4xl font-bold mb-2">M3ssages: </h2>
+      <h2 className="text-xl md:text-2xl my-2 font-bold">Results:</h2>
 
       <div className="flex items-center gap-4 flex-col ">
         
         {/* Messages */}
-
         <div
           key={crypto.randomUUID()}
           className="p-4 w-full flex flex-col md:flex-row items-start gap-x-8 rounded-lg bg-[#222] shadow-lg "
         >
           <div className="flex items-center justify-around w-[80%] md:w-[30%] mx-auto gap-2">
-            <h4 className="text-md md:text-2xl font-bold underline">KillYourselfLyub</h4>
+            <h4 className="text-md md:text-2xl font-bold underline">
+              KillYourselfLyub
+            </h4>
 
             <div className="w-20 h-20 relative">
-              <Image src="/tenuki2.jpeg" alt="fuck my life" fill className="rounded-lg"/>
+              <Image
+                src="/tenuki2.jpeg"
+                alt="fuck my life"
+                fill
+                className="rounded-lg"
+              />
             </div>
           </div>
 
@@ -58,12 +54,9 @@ function ChatMessage({convoMessage}: ChatMessageProps) {
             natus quam vel! Expedita, quos?
           </p>
         </div>
-
-
       </div>
     </div>
   );
 }
 
-export default ChatMessage;
-
+export default BuisnessMessage;

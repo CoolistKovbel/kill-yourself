@@ -10,7 +10,7 @@ function  ChatAI() {
 
 
   return (
-    <div>
+    <div className="w-full h-screen bg-[#222] text-white">
       <ChatForm convoSetMessage={convoSetMessage} />
 
       <ChatMessage convoMessage={convoMessage}/>
