@@ -133,6 +133,7 @@ function ChatForm({ convoSetMessage }: ChatFormProps) {
           onSubmit={form.handleSubmit(onSubmit)}
           className="p-4 bg-[#334] text-black"
         >
+          
           <FormField
             control={form.control}
             name="prompt"
@@ -149,6 +150,7 @@ function ChatForm({ convoSetMessage }: ChatFormProps) {
               </FormItem>
             )}
           />
+
           <FormField
             control={form.control}
             name="option"

@@ -23,9 +23,9 @@ export async function POST(req: Request) {
 
     const { newMessages } = da;
 
-    console.log(da.newMessages[0], 'what is life')
+    // console.log(da.newMessages[0], 'what is life')
 
-    console.log(da.newMessages[1])
+    // console.log(da.newMessages[1])
 
 
     const chatsComplete = await openai.chat.completions.create({
@@ -33,10 +33,22 @@ export async function POST(req: Request) {
       model: "gpt-3.5-turbo",
     });
 
-    console.log(chatsComplete.choices[0].message);
+
+    // Setup Database connections
+
+    // const dbSuck = await db.transactions.create({
+    //   data: {
+    //     message: newMessages[1].content,
+    //     reply: ,
+    //     Transact: ,
+    //     userId: ,
+    //   }
+    // })
+
+    // console.log(chatsComplete.choices[0].message);
     
 
-    return NextResponse.json(newMessages, { status: 200 });
+    return NextResponse.json(chatsComplete.choices[0].message, { status: 200 });
 
   } catch (error) {
 

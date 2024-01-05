@@ -6,9 +6,7 @@ import ChatMessage from "./ChatMessage";
 
 function  ChatAI() {
 
-
   const [convoMessage, convoSetMessage] = useState([])
-
 
 
   return (
