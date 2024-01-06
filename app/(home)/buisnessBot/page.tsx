@@ -1,4 +1,4 @@
-"use client";
+
 
 import BuisnessForm from "@/components/buisnessBot/BuisnessForm";
 import BuisnessMessage from "@/components/buisnessBot/BuisnessMessage";
@@ -6,7 +6,7 @@ import BuisnessMessage from "@/components/buisnessBot/BuisnessMessage";
 
 function BuisnessBot() {
   return (
-    <div className="w-full h-screen bg-[#222] text-white">
+    <div className="w-full min-h-screen bg-[#222] text-white">
       
       <header className="p-4 bg-[#322]">
         <h2 className="text-2xl text-5xl font-bold mb-4">Buisness Bot Chat</h2>
@@ -16,11 +16,13 @@ function BuisnessBot() {
         </p>
       </header>
 
-      {/* Form */}
-      <BuisnessForm />
+      <div className="w-full h-screen text-white">
+        {/* Form */}
+        <BuisnessForm />
 
-      {/* Results */}
-      <BuisnessMessage />
+        {/* Results */}
+        <BuisnessMessage />
+      </div>
 
     </div>
   );

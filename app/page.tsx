@@ -1,6 +1,5 @@
 import AuthClient from "@/components/authentication/AuthClient";
 import Hero from "@/components/landingPage/Hero";
-import { Separator } from "@/components/ui/separator";
 
 
 export default function Home() {
@@ -9,7 +8,6 @@ export default function Home() {
       
       {/* hEro */}
       <Hero />
-      <Separator className="bg-orange-200 rounded-md my-2" />
 
       {/* Authentication client */}
       <AuthClient />
