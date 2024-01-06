@@ -135,14 +135,16 @@ function PhotoBotForm() {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      console.log(values);
-
-      const res = await fetch("/api/photo-post", {
+      
+      const res = await fetch("/api/photo-bot", {
         method: "POST",
         body: JSON.stringify(values),
       });
 
-      console.log(res);
+      const resp = await res.json();
+
+      console.log(resp)
+
     } catch (err: any) {
       console.log(err);
     } finally {
